@@ -1,0 +1,12 @@
+model:
+  input_size: [416, 416]
+  backbone: "yolov8n"
+
+training:
+  batch_size: 16
+  epochs: 50
+  learning_rate: 0.0005
+
+inference:
+  conf_threshold: 0.35      # Discarding boxes with <35% confidence
+  nms_iou_threshold: 0.45   # Removing overlapping duplicate boxes

@@ -1,0 +1,5 @@
+tracker:
+  algorithm: "sort"         # Simple Online and Realtime Tracking
+  max_age: 5                # Frames before deleting an unmatched track
+  min_hits: 3               # Frames required to initialize a confirmed track
+  iou_Matching_threshold: 0.3

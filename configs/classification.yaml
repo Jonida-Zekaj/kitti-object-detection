@@ -1,0 +1,11 @@
+model:
+  architecture: "custom_cnn" # Options: custom_cnn, mobilenet_v2, resnet50
+  input_shape: [64, 64, 3]
+  num_classes: 3
+  dropout: 0.5
+
+training:
+  batch_size: 64
+  epochs: 20
+  learning_rate: 0.001
+  optimizer: "adam"

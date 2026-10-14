@@ -1,0 +1,15 @@
+# Defining the Global (Shared) Settings -- used across three tasks 
+
+
+paths:
+  train_images: "data/training/image_2"
+  train_labels: "data/training/label_2"
+  test_images: "data/testing/image_2"
+  results_dir: "results"
+
+dataset:
+  target_size: [416, 416]
+  classes: ["Car", "Pedestrian", "Cyclist", "Van", "Truck"]
+  ignore_classes: ["DontCare", "Misc"]
+  random_seed: 42
+ 

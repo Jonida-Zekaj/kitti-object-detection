@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "kitti-object-detection" 
+name = "kitti-object-detection"
 version = "0.1.0"
 description = "End-to-end 2D object classification, detection, and tracking on the KITTI dataset."
 readme = "README.md"
@@ -21,4 +21,7 @@ dependencies = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
- 
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

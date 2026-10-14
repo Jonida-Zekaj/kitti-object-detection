@@ -1,0 +1,12 @@
+numpy
+pandas
+matplotlib
+Pillow
+opencv-python
+tensorflow
+pyyaml
+scipy
+pytest
+streamlit
+yaml
+PyYAML
