@@ -1,11 +1,14 @@
 model:
   architecture: "custom_cnn" # Options: custom_cnn, mobilenet_v2, resnet50
-  input_shape: [64, 64, 3]
-  num_classes: 3
+  input_shape: [64, 64] # dimensions of cropped images
+  num_classes: 5
   dropout: 0.5
 
 training:
   batch_size: 64
   epochs: 20
   learning_rate: 0.001
+  val_split: 0.2
+  max_samples_per_class: 1500 # stop one class from dominating over others
   optimizer: "adam"
+  checkpoint: "results/checkpoints/classifier_best.pth" # path to save the best model
