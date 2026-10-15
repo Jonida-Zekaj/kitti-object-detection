@@ -53,3 +53,15 @@ def extract_object_crops(
         return np.empty((0, crop_size[1], crop_size[0], 3), dtype=np.float32), np.empty((0,), dtype=np.int64)
 
     return np.stack(crops), np.array(labels, dtype=np.int64)
+
+class KittiCropDataset(Dataset): # Objects in Kitti datasett => PyTorch Dataset
+    def __init__(self, crops: np.ndarray, labels: np.ndarray):
+        # Convert (N, H, W, C) -> (N, C, H, W) for PyTorch Conv2d
+        self.crops = torch.tensor(crops, dtype=torch.float32).permute(0, 3, 1, 2)
+        self.labels = torch.tensor(labels, dtype=torch.long)
+
+    def __len__(self) -> int:
+        return len(self.labels)
+
+    def __getitem__(self, idx: int) -> Tuple[torch.Tensor, torch.Tensor]:
+        return self.crops[idx], self.labels[idx]
