@@ -3,6 +3,7 @@ from detection.dataset_adapter import KittiDetector
 
 adapter = KittiDetector(
     image_dir=Path("data/training/image_2"),
+    
     label_dir=Path("data/training/label_2"),
 )
 

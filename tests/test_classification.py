@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 import torch
 
-from detection.dataset_adapter import KittiDetectionAdapter
+from detection.dataset_adapter import KittiDetector
 from classification.dataset import extract_object_crops, KittiCropDataset
 from classification.model import KittiCropClassifier
 
@@ -27,7 +27,7 @@ def test_extract_object_crops(tmp_path: Path):
         encoding="utf-8",
     )
 
-    adapter = KittiDetectionAdapter(
+    adapter = KittiDetector(
         image_dir=tmp_path,
         label_dir=tmp_path,
         classes=["Car", "Pedestrian", "Cyclist"],
