@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
 
 from utils.config import load_config
-from detection.dataset_adapter import KittiDetectionAdapter
+from detection.dataset_adapter import KittiDetector
 from classification.dataset import extract_object_crops, KittiCropDataset
 from classification.model import KittiCropClassifier
 from classification.evaluate import evaluate_classifier
@@ -26,7 +26,7 @@ def run_training(max_images: int = 500) -> None:
     classes = base_cfg["dataset"]["classes"]
     crop_size = tuple(cls_cfg["model"]["crop_size"])
 
-    adapter = KittiDetectionAdapter(
+    adapter = KittiDetector(
         image_dir=base_cfg["paths"]["train_images"],
         label_dir=base_cfg["paths"]["train_labels"],
         classes=classes,
@@ -81,7 +81,7 @@ def run_training(max_images: int = 500) -> None:
         print(f"Epoch [{epoch}/{epochs}] - Loss: {epoch_loss:.4f}")
 
     # Save checkpoint
-    ckpt_path = Path(cls_cfg["training"]["checkpoint_path"])
+    ckpt_path = Path(cls_cfg["training"]["checkpoint"])
     ckpt_path.parent.mkdir(parents=True, exist_ok=True)
     torch.save(model.state_dict(), ckpt_path)
     print(f"Saved model checkpoint to: {ckpt_path}")
