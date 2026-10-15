@@ -7,3 +7,4 @@ def test_load_default_config():
     assert "Car" in cfg["dataset"]["classes"]
 
     # goal: verify that the default configuration loads correctly
+    # run: pytest 
