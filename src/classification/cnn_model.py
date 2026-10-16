@@ -1,8 +1,6 @@
 import torch
 import torch.nn as nn
 
-
-
 class KittiCropClassifier(nn.Module):
     def __init__(self, 
                  num_classes: int = 5,

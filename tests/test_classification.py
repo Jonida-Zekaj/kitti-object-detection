@@ -5,7 +5,7 @@ import torch
 
 from detection.dataset_adapter import KittiDetector
 from classification.dataset import extract_object_crops, KittiCropDataset
-from classification.model import KittiCropClassifier
+from classification.cnn_model import KittiCropClassifier
 
 
 def test_cnn_forward_shape():

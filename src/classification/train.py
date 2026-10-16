@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from utils.config import load_config
 from detection.dataset_adapter import KittiDetector
 from classification.dataset import extract_object_crops, KittiCropDataset
-from classification.model import KittiCropClassifier
+from classification.cnn_model import KittiCropClassifier
 from classification.evaluate import evaluate_classifier
 
 
