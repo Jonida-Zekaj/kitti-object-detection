@@ -3,7 +3,7 @@ import torch
 # Let IoU = Intersection of Union
 # Does the bbox predicted match the bbox ground truth and by how much
  
-class calc_iou(box1: torch.Tensor, 
+def calc_iou(box1: torch.Tensor, 
                box2: torch.Tensor) -> torch.Tensor:
     # Get coordinates of the intersection rectangle
     x1_inter = torch.max(box1[..., 0], box2[..., 0])
