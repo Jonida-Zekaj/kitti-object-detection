@@ -4,7 +4,7 @@ import cv2
 import torch
 
 from utils.config import load_config
-from pipeline import InferencePipeline
+from pipeline import Pipeline
 
 
 def get_device() -> str:
@@ -43,13 +43,13 @@ def run_cli():
     parser = argparse.ArgumentParser(description="KITTI Perception Engine (Detect + Track)")
     parser.add_argument("--image", type=str, help="Path to input image file")
     parser.add_argument("--weights", type=str, default="results/checkpoints/detector_init.pth", help="Model weights path")
-    parser.add_argument("--output", type=str, default="results/figures/inference_output.png", help="Output path")
+    parser.add_argument("--output", type=str, default="results/figures/pipeline_output.png", help="Output path")
     args = parser.parse_args()
 
     device = get_device()
-    print(f"Initializing Inference Pipeline on {device}...")
+    print(f"Initializing Pipeline on {device}...")
 
-    pipeline = InferencePipeline(weights_path=args.weights, device=device)
+    pipeline = Pipeline(weights_path=args.weights, device=device)
 
     if args.image and Path(args.image).exists():
         img = cv2.imread(args.image)
