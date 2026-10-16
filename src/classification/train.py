@@ -94,3 +94,5 @@ def run_training(max_images: int = 500) -> None:
 
 if __name__ == "__main__":
     run_training(max_images=500)
+
+    # run: PYTHONPATH=src python3 src/classification/train.py
