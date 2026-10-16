@@ -3,7 +3,12 @@ import torch.nn as nn
 
 
 class Detector(nn.Module):
-    def __init__(self, num_classes: int = 5, grid_size: int = 13, num_boxes: int = 2):
+    # classifier: idenentify objects from crops of single objects 
+    # detector: identify objects in a a scene of many objects
+    def __init__(self, num_classes: int = 5,
+                 grid_size: int = 13, # predictiuon grid 13 x 13
+                 num_boxes: int = 2):
+        
         super().__init__()
         self.S = grid_size
         self.B = num_boxes
@@ -39,7 +44,7 @@ class Detector(nn.Module):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         features = self.backbone(x)
-        # Resize features to S x S grid if not already
+        # Resize features to S x S grid
         features = nn.functional.adaptive_avg_pool2d(features, (self.S, self.S))
         out = self.head(features)
         
